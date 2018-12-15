@@ -1,5 +1,7 @@
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
 import org.jointheleague.graphical.robot.Robot;
 
 public class Houses {
@@ -14,40 +16,79 @@ public class Houses {
 		r2d2.setPenWidth(8);
 		r2d2.penDown();
 		r2d2.setWindowColor(Color.BLACK);
+		r2d2.turn(90);
 
-		drawFlatRoof();
-		drawPointyRoof();
+		String sizea = JOptionPane.showInputDialog("Enter a number between 1 and 300.");
+
+		int sizeb = Integer.parseInt(sizea);
+
+		drawHouse(sizeb);
+
 	}
 
-	static void drawFlatRoof() {
+	static void drawFlatRoof(int height) {
 
-		r2d2.setPenColor(Color.WHITE);
+		r2d2.setPenColor(Color.GREEN);
+		r2d2.move(40);
 		r2d2.turn(270);
-		r2d2.move(100);
+		r2d2.setPenColor(Color.WHITE);
+		r2d2.move(height);
 		r2d2.turn(90);
 		r2d2.move(40);
 		r2d2.turn(90);
-		r2d2.move(100);
+		r2d2.move(height);
+		r2d2.setPenColor(Color.GREEN);
+		r2d2.turn(270);
+		r2d2.move(40);
+
+	}
+
+	static void drawPointyRoof(int height) {
+
+		r2d2.setPenColor(Color.WHITE);
+		r2d2.turn(270);
+		r2d2.move(height);
+		r2d2.turn(45);
+		r2d2.move(35);
+		r2d2.turn(90);
+		r2d2.move(35);
+		r2d2.turn(45);
+		r2d2.move(height);
 		r2d2.setPenColor(Color.GREEN);
 		r2d2.turn(270);
 		r2d2.move(20);
 
 	}
 
-	static void drawPointyRoof() {
+	static void drawHouse(String height) {
 
-		r2d2.setPenColor(Color.WHITE);
-		r2d2.turn(270);
-		r2d2.move(100);
-		r2d2.turn(315);
-		r2d2.move(10);
-		r2d2.turn(90);
-		r2d2.move(10);
-		r2d2.turn(315);
-		r2d2.move(100);
-		r2d2.setPenColor(Color.GREEN);
-		r2d2.turn(270);
-		r2d2.move(20);
+		int size = 0;
 
+		if (height.equalsIgnoreCase("small")) {
+
+			size = 60;
+
+		} else if (height.equalsIgnoreCase("medium")) {
+
+			size = 120;
+
+		} else if (height.equalsIgnoreCase("large")) {
+
+			size = 250;
+
+		} else {
+
+			JOptionPane.showMessageDialog(null, "ERROR");
+
+		}
+
+		if (size >= 250 && size > 1) {
+
+			drawFlatRoof(size);
+
+		} else if (size < 250) {
+
+			drawPointyRoof(size);
+		}
 	}
 }
