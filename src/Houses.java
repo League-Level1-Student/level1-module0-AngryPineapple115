@@ -22,12 +22,14 @@ public class Houses {
 
 		int sizeb = Integer.parseInt(sizea);
 
-		drawHouse(sizeb);
+		drawPointyRoof(sizea);
+		drawFlatRoof(sizea);
 
 	}
 
 	static void drawFlatRoof(int height) {
 
+		r2d2.setWindowColor(Color.BLACK);
 		r2d2.setPenColor(Color.GREEN);
 		r2d2.move(40);
 		r2d2.turn(270);
@@ -45,6 +47,7 @@ public class Houses {
 
 	static void drawPointyRoof(int height) {
 
+		r2d2.setWindowColor(Color.BLACK);
 		r2d2.setPenColor(Color.WHITE);
 		r2d2.turn(270);
 		r2d2.move(height);
@@ -68,15 +71,21 @@ public class Houses {
 
 			size = 60;
 
-		} else if (height.equalsIgnoreCase("medium")) {
+		}
+
+		else if (height.equalsIgnoreCase("medium")) {
 
 			size = 120;
 
-		} else if (height.equalsIgnoreCase("large")) {
+		}
+
+		else if (height.equalsIgnoreCase("large")) {
 
 			size = 250;
 
-		} else {
+		}
+
+		else {
 
 			JOptionPane.showMessageDialog(null, "ERROR");
 
@@ -86,7 +95,9 @@ public class Houses {
 
 			drawFlatRoof(size);
 
-		} else if (size < 250) {
+		}
+
+		else if (size < 250) {
 
 			drawPointyRoof(size);
 		}
