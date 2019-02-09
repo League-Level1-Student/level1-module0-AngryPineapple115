@@ -16,20 +16,22 @@ void draw() {
   ellipse(raindropx, raindropy, 50, 50);
 
   raindropy = raindropy + 9;
-  
+
   fill(#989898);
-  rect(mouseX, mouseY, 30, 30);
-  
-  if (raindropx>=mouseX&&raindropx<=mouseX+50&&raindropy==mouseY&&raindropy==mouseY-50) {
-    
-    
-    
-  }
-  
-  
-  
+  stroke(#989898);
+  rect(mouseX, mouseY, 80, 80);
+
+  checkCatch();
+}
+
+void checkCatch() {
+  if (raindropx>=mouseX&&raindropx<=mouseX+50&&raindropy==mouseY&&raindropy==mouseY-50)
+    score++;
+  if (score == 0)
+    score--;
+  println("Your score is now: " + score);
 
   fill(0, 0, 0);
   textSize(16);
-  text("Score: ", 20, 20);
+  text("Score: " + score, 20, 20);
 }
