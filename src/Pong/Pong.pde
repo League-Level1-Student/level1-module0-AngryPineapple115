@@ -25,8 +25,8 @@ int paddley = 750;
 
 int paddlelength = 200;
 
-int ballspeedx = 1;
-int ballspeedy = 1;
+int ballspeedx = 2;
+int ballspeedy = 2;
 
 boolean intersects(int ballx, int bally, int paddlex, int paddley, int paddlelength) {
   if (bally > paddley && ballx > paddlex && ballx < paddlex + paddlelength)
@@ -34,7 +34,6 @@ boolean intersects(int ballx, int bally, int paddlex, int paddley, int paddlelen
   else
     return false;
 }
-
 void draw() {
 
   image(backgroundImage, 0, 0);
@@ -43,6 +42,9 @@ void draw() {
   fill(#4EBC5B);
   stroke(#4EBC5B);
   ellipse(ballx, bally, 50, 50);
+  
+  fill(#10ACDC);
+  stroke(#10ACDC);
   rect(mouseX-100, 750, paddlelength, 30);
 
   for (int i = 0; i < 10; i++) {
@@ -50,18 +52,24 @@ void draw() {
     bally = bally-ballspeedy;
   }
 
-  if (ballx>798&&ballx<800) {
+  if (bally<25) {
+    ballspeedy = -ballspeedy;
+  }
+  if (bally>775) {
+    ballspeedy = -ballspeedy;
+  }
+  if (ballx<25) {
     ballspeedx = -ballspeedx;
-  } else if (ballx<2&&ballx>0) {
+  }
+  if (ballx>775) {
     ballspeedx = -ballspeedx;
+  }
+  if (ballx>mouseX-100&&ballx<mouseX+100&&bally>750&&bally<780) {
+    ballspeedy = -ballspeedy;
+  }
 
-    if (bally>798&&bally<800) {
-      ballspeedx = -ballspeedx;
-    } else if (bally<2&&bally>0) {
-      ballspeedy = -ballspeedy;
-    }
-
-    if (intersects(ballx, bally, paddlex, paddley, paddlelength)) {
-    }
+  if (intersects(ballx, bally, paddlex, paddley, paddlelength)) {
+    ballspeedx=-ballspeedx;
+    ballspeedy = -ballspeedy;
   }
 }
