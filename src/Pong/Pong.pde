@@ -1,20 +1,20 @@
-import ddf.minim.*;  
-Minim minim;
-AudioSample sound;
+//import ddf.minim.*;  
+//Minim minim;
+//AudioSample sound;
 
 PImage backgroundImage;
 
 void setup() {
 
-  minim = new Minim (this);
-  //sound = minim.loadSample("pong.wav", 128);
+  //minim = new Minim (this);
+  ////sound = minim.loadSample("pong.wav", 128);
 
   backgroundImage = loadImage("http://is2.mzstatic.com/image/thumb/Purple62/v4/12/e4/7a/12e47a4a-0668-75fd-521e-be6b5826f5f6/source/512x512bb.jpg");
   size (800, 800);
 
   if (ballx<31) {
-    sound.trigger();
-  }
+  //  sound.trigger();
+  //}
 }
 
 int ballx = 400 ;
