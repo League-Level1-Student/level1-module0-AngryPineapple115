@@ -7,16 +7,24 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class SoundEffectsMachine {
+public class SoundEffectsMachine implements ActionListener {
+
+	JButton jba = new JButton();
+	JButton jbb = new JButton();
+	JButton jbc = new JButton();
+	JButton jbd = new JButton();
 
 	public static void main(String[] args) {
 
+		SoundEffectsMachine sem = new SoundEffectsMachine();
+		sem.setup();
+
+	}
+
+	public void setup() {
+
 		JFrame jf = new JFrame();
 		JPanel jp = new JPanel();
-		JButton jba = new JButton();
-		JButton jbb = new JButton();
-		JButton jbc = new JButton();
-		JButton jbd = new JButton();
 		jp.add(jba);
 		jp.add(jbb);
 		jp.add(jbc);
@@ -25,29 +33,48 @@ public class SoundEffectsMachine {
 		jba.setText("Airplane Landing");
 		jbb.setText("Service Bell");
 		jbc.setText("Old Car");
-		jbd.setText("Muscle Car");
+		jbd.setText("Service Bell");
+		jba.addActionListener(this);
 		jf.add(jp);
 		jf.pack();
 		jf.setTitle("Sound Effects Machine");
 		jf.setVisible(true);
 
-		if (jba == pressed) {
-
-		}
-		if (jbb == pressed) {
-
-		}
-		if (jbc == pressed) {
-
-		}
-		if (jbd == pressed) {
-
-		}
-
 	}
 
 	private void playSound(String fileName) {
+
 		AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
 		sound.play();
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+
+		JButton pressed = (JButton) e.getSource();
+
+		if (jba == pressed) {
+
+			playSound("file:///Users/league/Desktop/airplane.png");
+
+		}
+
+		if (jbb == pressed) {
+
+			playSound("file:///Users/league/Desktop/servicebell.png");
+
+		}
+
+		if (jbc == pressed) {
+
+			playSound("file:///Users/league/Desktop/oldcar.png");
+
+		}
+
+		if (jbd == pressed) {
+
+			playSound("file:///Users/league/Desktop/oldcar.png");
+
+		}
 	}
 }
