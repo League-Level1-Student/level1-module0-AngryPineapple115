@@ -51,8 +51,9 @@ public class BodyPartQuiz {
 		}
 		// 7. Use the showNextImage() method below to get the next image
 		showNextImage();
+		window.pack();
 		// 8. Show them their current score
-		JOptionPane.showMessageDialog(null, score);
+		JOptionPane.showMessageDialog(null, "Your score is " + score + ".");
 		// 9. .... repeat for all your images.....
 		String guessTwo = JOptionPane.showInputDialog("Who is this person?");
 		if (guessTwo.equalsIgnoreCase("Leonardo")) {
@@ -61,7 +62,27 @@ public class BodyPartQuiz {
 			JOptionPane.showMessageDialog(null, "No, the person was Leonardo.");
 		}
 		showNextImage();
-		JOptionPane.showMessageDialog(null, score);
+		window.pack();
+		JOptionPane.showMessageDialog(null, "Your score is " + score + ".");
+
+		String guessThree = JOptionPane.showInputDialog("Who is this person?");
+		if (guessThree.equalsIgnoreCase("Morgan")) {
+			score = score + 1;
+		} else {
+			JOptionPane.showMessageDialog(null, "No, the person was Morgan.");
+		}
+		showNextImage();
+		window.pack();
+		JOptionPane.showMessageDialog(null, "Your score is " + score + ".");
+
+		String guessFour = JOptionPane.showInputDialog("Who is this person?");
+		if (guessTwo.equalsIgnoreCase("Jack")) {
+			score = score + 1;
+		} else {
+			JOptionPane.showMessageDialog(null, "No, the person was Jack.");
+		}
+		JOptionPane.showMessageDialog(null, "Your score is " + score + ".");
+		JOptionPane.showMessageDialog(null, "Your final score is " + score + ".");
 
 	}
 
@@ -73,7 +94,7 @@ public class BodyPartQuiz {
 
 	public static void main(String[] args) {
 		BodyPartQuiz quiz = new BodyPartQuiz();
-		quiz.initializeGui();
+		quiz.initializeGui(0, 0);
 		quiz.startQuiz();
 	}
 
