@@ -52,7 +52,6 @@ public class DuelingButtons implements ActionListener {
 
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		JButton buttonPressed = (JButton) arg0.getSource();
 
